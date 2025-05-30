@@ -1,4 +1,4 @@
-import edu.cmu.ri.createlab.terk.robot.finch.Finch;
+
 import java.util.Scanner;
 
 public class PlayGrid {
@@ -75,31 +75,31 @@ public class PlayGrid {
             switch(direction.toLowerCase()){
                 case "up":  
                     // Move forward
-                    f.setWheelVelocities(SPEED, SPEED);
+                    f.setMotors(SPEED, SPEED);
                     Thread.sleep(MOVE_DURATION);
-                    f.stopWheels();
+                    f.stop();
                     break;
                 case "down":  
                     // Move backward
-                	f.setWheelVelocities(-SPEED, -SPEED);
+                	f.setMotors(-SPEED, -SPEED);
                     Thread.sleep(MOVE_DURATION);
-                    f.stopWheels();
+                    f.stop();
                     break;
                 case "left":
                     // Turn left then move forward
-                    f.setWheelVelocities(-SPEED, SPEED);
+                    f.setMotors(-SPEED, SPEED);
                     Thread.sleep(TURN_DURATION);
-                    f.setWheelVelocities(SPEED, SPEED);
+                    f.setMotors(SPEED, SPEED);
                     Thread.sleep(MOVE_DURATION);
-                    f.stopWheels();
+                    f.stop();
                     break;
                 case "right":
                     // Turn right then move forward
-                    f.setWheelVelocities(SPEED, -SPEED);
+                    f.setMotors(SPEED, -SPEED);
                     Thread.sleep(TURN_DURATION);
-                    f.setWheelVelocities(SPEED, SPEED);
+                    f.setMotors(SPEED, SPEED);
                     Thread.sleep(MOVE_DURATION);
-                    f.stopWheels();
+                    f.stop();
                     break;
                 default:
                     System.out.println("Unknown direction command.");
@@ -111,7 +111,7 @@ public class PlayGrid {
     }
     
     public static void main(String[] args) {
-        FinchGrid gridSim = new FinchGrid();
+        PlayGrid gridSim = new PlayGrid();
         Scanner scanner = new Scanner(System.in);
         System.out.println("Control the Finch by entering: up, down, left, or right (type exit to quit).");
         
@@ -124,7 +124,7 @@ public class PlayGrid {
             gridSim.movePoint(input);
         }
         
-        // Stop the Finch and close the connection properly.
+
         PlayGrid.gridSim.stopWheels();
         PlayGrid.gridSim.quit();
         scanner.close();
