@@ -10,6 +10,12 @@ The plan to implement in java is to have 3 classes:
 
 ##### main 
 
+Main picks a random Shooting spot for the finch bot to go to.
+
 ##### Grid
 
+creates a play area of shooting spots with a 2D array
+
 ##### ShootingSpot
+
+creates a Shooting spot that has the inctions on how to get to said shooting spot from 0,0.
